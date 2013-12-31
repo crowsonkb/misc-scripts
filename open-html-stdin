@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# open-html-stdin reads HTML data from stdin and opens it in the OS X default
+# web browser.
+
+cmd="$(basename "$0")"
+tmpdir="$(mktemp -d -t ${cmd})" || exit 1
+cat > "${tmpdir}/stdin.html"
+open "${tmpdir}/stdin.html"

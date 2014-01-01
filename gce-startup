@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Google Compute Engine first-boot script
+
+readonly DEFAULT_PKGS=(less netcat-openbsd screen vim)
+readonly LOGFILE="/var/log/first_boot"
+
+first_boot() {
+  apt-get update \
+    && apt-get -y dist-upgrade \
+    && apt-get -y dist-upgrade \
+    && apt-get -y install "${DEFAULT_PKGS[@]}" \
+    && reboot
+}
+
+if [[ ! -e "${LOGFILE}" ]]; then
+  first_boot |& tee -a "${LOGFILE}"
+fi

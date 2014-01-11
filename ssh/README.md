@@ -1,4 +1,4 @@
-Fast-reconnecting multiplexing SSH scripts, startable at login.
+Fast-reconnecting multiplexing SSH scripts for unreliable network conditions, startable at login.
 
 `ssh-master-kath` will notice that the SSH connection has been dropped within five or so seconds and begin reconnection attempts once per second. `ssh-kath` will wait until the master connection is re-established, then reconnect itself.
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 while :; do
-  if [[ -S "$HOME/.ssh/sock_kath.io_22_root" ]]; then
-    ssh -Ct -S "$HOME/.ssh/sock_%h_%p_%r" root@kath.io 'screen -dr || screen'
+  if [[ -S "$HOME/.ssh/sock_root_kath.io_22" ]]; then
+    ssh -Ct -S "$HOME/.ssh/sock_%r_%h_%p" root@kath.io 'screen -dr || screen'
   fi
   (( $? == 0 )) && exit 0
   sleep 1

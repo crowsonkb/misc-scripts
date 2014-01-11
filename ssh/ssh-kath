@@ -1,9 +1,22 @@
 #!/bin/bash
 
+readonly user="root"
+readonly host="kath.io"
+readonly port="22"
+
+opts=(
+  -C
+  -p "${port}"
+  -S "${HOME}/.ssh/sock_%r_%h_%p"
+  -t
+  "${user}@${host}"
+  'screen -dr || screen'
+)
+
 while :; do
-  if [[ -S "$HOME/.ssh/sock_root_kath.io_22" ]]; then
-    ssh -Ct -S "$HOME/.ssh/sock_%r_%h_%p" root@kath.io 'screen -dr || screen'
+  if [[ -S "${HOME}/.ssh/sock_${user}_${host}_${port}" ]]; then
+    ssh "${opts[@]}"
+    (( $? == 0 )) && exit 0
   fi
-  (( $? == 0 )) && exit 0
   sleep 1
 done

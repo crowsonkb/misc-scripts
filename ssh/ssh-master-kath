@@ -1,9 +1,27 @@
 #!/bin/bash
 
+readonly user="root"
+readonly host="kath.io"
+readonly port="22"
+readonly socks_port="1080"
+
+opts=(
+  -C
+  -c blowfish
+  -D "localhost:${socks_port}"
+  -M
+  -N
+  -p "${port}"
+  -S "${HOME}/.ssh/sock_%r_%h_%p"
+  -o LocalCommand='echo Connected to %r@%h:%p >&2'
+  -o PermitLocalCommand=yes
+  -o ServerAliveInterval=3
+  -o ServerAliveCountMax=1
+  -o TCPKeepAlive=no
+  "${user}@${host}"
+)
+
 while :; do
-  ssh -CMN -c blowfish -D localhost:1080 -S "$HOME/.ssh/sock_%r_%h_%p"         \
-    -o LocalCommand='echo Connected to %r@%h:%p >&2' -o PermitLocalCommand=yes \
-    -o ServerAliveInterval=3 -o ServerAliveCountMax=1 -o TCPKeepAlive=no       \
-    root@kath.io
+  ssh "${opts[@]}"
   sleep 1
 done

@@ -2,7 +2,7 @@
 #
 # Google Compute Engine first-boot script
 
-readonly DEFAULT_PKGS=(less netcat-openbsd screen vim)
+readonly DEFAULT_PKGS=(git less netcat-openbsd screen vim)
 readonly LOGFILE="/var/log/first_boot"
 
 first_boot() {

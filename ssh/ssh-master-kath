@@ -15,8 +15,8 @@ opts=(
   -S "${HOME}/.ssh/sock_%r_%h_%p"
   -o LocalCommand='echo Connected to %r@%h:%p >&2'
   -o PermitLocalCommand=yes
-  -o ServerAliveInterval=3
   -o ServerAliveCountMax=1
+  -o ServerAliveInterval=3
   -o TCPKeepAlive=no
   "${user}@${host}"
 )

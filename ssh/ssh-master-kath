@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly user="root"
+readonly user="kat"
 readonly host="kath.io"
 readonly port="22"
 readonly socks_port="1080"

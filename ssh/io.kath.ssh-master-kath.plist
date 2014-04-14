@@ -5,7 +5,7 @@
    <key>Label</key>
    <string>io.kath.ssh-master-kath</string>
    <key>Program</key>
-   <string>/Users/kcrowson/opt/bin/ssh-master-kath</string>
+   <string>/Users/kat/opt/bin/ssh-master-kath</string>
    <key>RunAtLoad</key>
    <true/>
 </dict>

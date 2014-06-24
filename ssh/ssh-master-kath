@@ -9,8 +9,6 @@ opts=(
   -C
   -c blowfish
   -D "localhost:${socks_port}"
-  -L 127.0.0.1:4444:127.0.0.1:4444
-  -L 127.0.0.1:7657:127.0.0.1:7657
   -M
   -N
   -p "${port}"

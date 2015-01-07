@@ -6,7 +6,7 @@ readonly port='22'
 readonly socks_port='1080'
 
 title() {
-    echo -e "\033]2;$1\a"
+    echo -e "\033]2;${user}@${host}: $1\a"
 }
 
 opts=(
@@ -14,7 +14,7 @@ opts=(
     -D "localhost:${socks_port}"
     -p "${port}"
     -t
-    -o LocalCommand='echo -e "\033]2;Connected 😃\a"'
+    -o LocalCommand="echo -e '$(title 'Connected 😃')'"
     -o PermitLocalCommand=yes
     -o ServerAliveCountMax=1
     -o ServerAliveInterval=3

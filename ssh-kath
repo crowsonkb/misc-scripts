@@ -1,0 +1,33 @@
+#!/bin/bash
+
+readonly user='kat'
+readonly host='kath.io'
+readonly port='22'
+readonly socks_port='1080'
+
+title() {
+    echo -e "\033]2;$1\a"
+}
+
+opts=(
+    -C
+    -D "localhost:${socks_port}"
+    -p "${port}"
+    -t
+    -o LocalCommand='echo -e "\033]2;Connected 😃\a"'
+    -o PermitLocalCommand=yes
+    -o ServerAliveCountMax=1
+    -o ServerAliveInterval=3
+    -o TCPKeepAlive=no
+    "${user}@${host}"
+    'tmux attach || tmux'
+)
+
+title 'Making initial connection… 😐'
+ssh "${opts[@]}"
+
+while :; do
+    title 'Reconnecting… 😣'
+    ssh "${opts[@]}"
+    sleep 1
+done

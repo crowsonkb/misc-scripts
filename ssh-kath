@@ -12,6 +12,7 @@ title() {
 opts=(
     -C
     -D "localhost:${socks_port}"
+    -e none
     -p "${port}"
     -t
     -o LocalCommand="echo -e '$(title 'Connected 😃')'"

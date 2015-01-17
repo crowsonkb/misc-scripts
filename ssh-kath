@@ -10,13 +10,13 @@ title() {
 }
 
 opts=(
-    -C
-    -D "localhost:${socks_port}"
-    -e none
-    -p "${port}"
-    -t
+    -o Compression=yes
+    -o DynamicForward="localhost:${socks_port}"
+    -o EscapeChar=none
     -o LocalCommand="echo -e '$(title 'Connected 😃')'"
     -o PermitLocalCommand=yes
+    -o Port="${port}"
+    -o RequestTTY=force
     -o ServerAliveCountMax=1
     -o ServerAliveInterval=3
     -o TCPKeepAlive=no

@@ -4,6 +4,7 @@ readonly user='kat'
 readonly host='kath.io'
 readonly port='22'
 readonly socks_port='1080'
+readonly backchat_port='38627'
 
 title() {
     echo -en "\033]2;${user}@${host}: $1\a"
@@ -16,12 +17,13 @@ opts=(
     -o LocalCommand="echo -en '$(title 'Connected 😃')'"
     -o PermitLocalCommand=yes
     -o Port="${port}"
+    -o RemoteForward="${backchat_port} localhost:${backchat_port}"
     -o RequestTTY=force
     -o ServerAliveCountMax=1
     -o ServerAliveInterval=3
     -o TCPKeepAlive=no
     "${user}@${host}"
-    'tmux attach || tmux'
+    'rm -f .ssh_tty; ln -s "${SSH_TTY}" .ssh_tty; tmux attach || tmux'
 )
 
 title 'Making initial connection… 😐'

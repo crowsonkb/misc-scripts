@@ -6,14 +6,14 @@ readonly port='22'
 readonly socks_port='1080'
 
 title() {
-    echo -e "\033]2;${user}@${host}: $1\a"
+    echo -en "\033]2;${user}@${host}: $1\a"
 }
 
 opts=(
     -o Compression=yes
     -o DynamicForward="localhost:${socks_port}"
     -o EscapeChar=none
-    -o LocalCommand="echo -e '$(title 'Connected 😃')'"
+    -o LocalCommand="echo -en '$(title 'Connected 😃')'"
     -o PermitLocalCommand=yes
     -o Port="${port}"
     -o RequestTTY=force
